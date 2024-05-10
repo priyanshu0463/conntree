@@ -98,12 +98,12 @@ export default function Home() {
 
 
   return (
-    <main className="bg-[#fdfdfa] w-screen h-screen relative flex items-center justify-center mt-8 p-8 md:p-16 flex-col min-w-[300px] md:flex-row">
+    <main className="bg-[#fdfdfa] w-screen h-screen relative flex items-center justify-center mt-10 p-8 md:p-16 flex-col min-w-[300px] md:flex-row">
         {/* form container */}
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-6xl items-center p-5 sm:flex-row flex-col md:flex-row min-w-[300px]">
+      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-6xl items-center mt-10 p-5 sm:flex-row flex-col md:flex-row min-w-[300px]">
         {/*content container  */}
-        <div className="p-4 sm:p-8 min-w-[300px] flex flex-col justify-center items-center">
-          <div className='sm:p-16'>
+        <div className="p-4 sm:p-8 min-w-[300px] mt-10 flex flex-col justify-center items-center">
+          <div className='sm:p-16 mt-5'>
 
           <h1 className='text-2xl sm:text-3xl font-bold text-[#c3a791] text-center mt-4 sm:mt-0'>Add details</h1>
           <p className="text-[15px] text-[#c3a791] mt-1 text-center">Click on Create button to generate the QR Code!</p>
