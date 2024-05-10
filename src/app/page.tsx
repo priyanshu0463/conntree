@@ -98,16 +98,16 @@ export default function Home() {
 
 
   return (
-    <main className="bg-[#fdfdfa] w-screen h-screen relative flex items-center justify-center p-16 flex-col min-w-[300px] md:flex-row">
+    <main className="bg-[#fdfdfa] w-screen h-screen relative flex items-center justify-center p-8 md:p-16 flex-col min-w-[300px] md:flex-row">
         {/* form container */}
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-6xl items-center p-5 sm:flex-row flex-col md:flex-row min-w-[300px]">
         {/*content container  */}
-        <div className="pl-25 px-16 min-w-[300px] flex justify-self items-self-center">
+        <div className="px-4 sm:px-8 min-w-[300px] flex flex-col justify-center items-center">
           <div className='sm:pl-16'>
 
-          <h1 className='sm:align-middle text-[30px] font-bold  text-[#c3a791]'>Add details</h1>
-          <p className="text-[15px] text-[#c3a791] mt-1">Click on Create button to generate the QR Code!</p>
-          <form action="" onSubmit={generateQRCode} className='flex flex-col gap-1   '>
+          <h1 className='text-2xl sm:text-3xl font-bold text-[#c3a791] text-center mt-4 sm:mt-0'>Add details</h1>
+          <p className="text-[15px] text-[#c3a791] mt-1 text-center">Click on Create button to generate the QR Code!</p>
+          <form action="" onSubmit={generateQRCode} className='flex flex-col gap-2 w-full max-w-sm mt-4'>
             <input
               className="p-2 mt-8 rounded-xl border outline-[#c3a791] flex min-w-[10px]"
               type="text"
