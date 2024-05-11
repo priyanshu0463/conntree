@@ -2,7 +2,9 @@
 import Image from 'next/image'
 import two from "../../public/two.jpeg";
 import qrcode from 'qrcode-generator';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 export default function Home() {
@@ -15,6 +17,8 @@ export default function Home() {
     github: '',
     linkdin: '',
   });
+
+  const pdfRef = useRef<HTMLDivElement>(null);
 
   const generateQRCode = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -63,14 +67,16 @@ export default function Home() {
 
   };
 
-  const handleDownload = () => {
-    if (qrCodeUrl) {
-      const anchor = document.createElement('a');
-      anchor.href = qrCodeUrl;
-      anchor.download = `${formData.firstname} ${formData.lastname}`+'.png';
-      anchor.click();
+  const handleDownloadPDF = () => {
+    if (pdfRef.current) {
+      html2canvas(pdfRef.current).then((canvas) => {
+        const imgData = canvas.toDataURL('image/pdf');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0);
+        pdf.save(`${formData.firstname}_${formData.lastname}_QR.pdf`);
+      });
     } else {
-      alert('No QR code to download.');
+      alert('Error generating PDF.');
     }
   };
 
@@ -100,8 +106,10 @@ export default function Home() {
           </style>
         </head>
         <body>
+              <p>${formData.firstname} ${formData.lastname}</p>
+              <p>${formData.email}</p>
+              <p>${formData.twitter} ${formData.linkdin !== '' ? `| ${formData.linkdin}` : ''} ${formData.github !== '' ? `| ${formData.github}` : ''}</p>
           <img src="${qrCodeUrl}" alt="QR Code">
-          <h4 style="text-decoration: underline;">${formData.firstname} ${formData.lastname}</h4>
         </body>
       </html>
         `);
@@ -185,19 +193,22 @@ export default function Home() {
         </div>
         <div className="justify-center items-center ">
         {qrCodeUrl ? (
-          <div className="sm:mt-0 mt-5 flex flex-col items-center ">
-            <p className='font-semibold text-xl' >{formData.firstname} {formData.lastname}</p>
-            <p>{formData.email}</p>
-            <p>{formData.twitter} {formData.linkdin !== '' ? `| ${formData.linkdin} ` : ''} {formData.github !== '' ? `| ${formData.github} ` : ''} </p>
-            <Image className="rounded-2xl py-5" width={350} height={350} src={qrCodeUrl} alt="QR Code" />
-            <div className='flex flex-row gap-10 justify-center py-5'>
-            <button className="bg-[#aa8c76] rounded-xl text-white px-4 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center" style={{ width: '120px' }} onClick={handlePrint}>
-            <img src="print.png" width={30} alt="Print" /> Print
-            </button>
-            <button className="bg-[#aa8c76] rounded-xl text-white px-3  pr-6 py-1 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center " style={{ minWidth: '120px' }}onClick={handleDownload}><img src="download.png" width={30} alt="Print" />Download</button>
+          <div   className="sm:mt-0 mt-5 flex flex-col items-center ">
+          <div ref={pdfRef} className="sm:mt-0 mt-5 flex flex-col items-center ">
 
-            </div>
+          <p className='font-semibold text-xl' >{formData.firstname} {formData.lastname}</p>
+          <p>{formData.email}</p>
+          <p>{formData.twitter} {formData.linkdin !== '' ? `| ${formData.linkdin} ` : ''} {formData.github !== '' ? `| ${formData.github} ` : ''} </p>
+          <Image className="rounded-2xl py-5" width={350} height={350} src={qrCodeUrl} alt="QR Code" />
           </div>
+          <div className='flex flex-row gap-10 justify-center py-5'>
+
+          <button className="bg-[#aa8c76] rounded-xl text-white px-4 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center" style={{ width: '120px' }} onClick={handlePrint}>
+          <img src="print.png" width={30} alt="Print" /> Print
+          </button>
+          <button className="bg-[#aa8c76] rounded-xl text-white px-3  pr-6 py-1 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center " style={{ minWidth: '120px' }}onClick={handleDownloadPDF}><img src="download.png" width={30} alt="Print" />Download</button>
+          </div>
+        </div>
         ) : (
           <div className=' sm:block hidden min-w-[450px] '>
 
