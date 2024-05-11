@@ -80,18 +80,30 @@ export default function Home() {
       const printWindow = window.open('', '_blank');
       if (printWindow) {
         printWindow.document.write(`
-          <html>
-            <head>
-              <title>${formData.firstname} ${formData.lastname}</title>
-              <style>
-                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
-                img { max-width: 100%; max-height: 100%; }
-              </style>
-            </head>
-            <body>
-              <img src="${qrCodeUrl}" alt="QR Code">
-            </body>
-          </html>
+        <html>
+        <head>
+          <title>${formData.firstname} ${formData.lastname}</title>
+          <style>
+            body {
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+            }
+            img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          </style>
+        </head>
+        <body>
+          <img src="${qrCodeUrl}" alt="QR Code">
+          <h2 style="text-decoration: underline;">${formData.firstname} ${formData.lastname}</h2>
+        </body>
+      </html>
         `);
         printWindow.print();
       } else {
