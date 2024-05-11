@@ -101,7 +101,7 @@ export default function Home() {
         </head>
         <body>
           <img src="${qrCodeUrl}" alt="QR Code">
-          <h2 style="text-decoration: underline;">${formData.firstname} ${formData.lastname}</h2>
+          <h4 style="text-decoration: underline;">${formData.firstname} ${formData.lastname}</h4>
         </body>
       </html>
         `);
