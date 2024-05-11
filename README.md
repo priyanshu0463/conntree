@@ -1,5 +1,5 @@
-# Contree(https://conntree.vercel.app/)
-Welcome to the Contree! In the realm of professional networking and event coordination, efficiency and reliability are paramount.This is an intuitive application designed to streamline attendee information exchange at company-sponsored events or local meetups. Gone are the days of manual data entry or cumbersome business card exchanges. With Contree, attendees can swiftly capture and share contact information via personalized QR code badges.
+# Contree
+Welcome to the [Contree]((https://conntree.vercel.app/)) ! In the realm of professional networking and event coordination, efficiency and reliability are paramount.This is an intuitive application designed to streamline attendee information exchange at company-sponsored events or local meetups. Gone are the days of manual data entry or cumbersome business card exchanges. With Contree, attendees can swiftly capture and share contact information via personalized QR code badges.
 
 This project offers a seamless user experience, featuring an input panel where attendees can effortlessly input their name, email address, Twitter handle, and GitHub username. While attendee name and email are required, the app provides flexibility by allowing optional fields for Twitter and GitHub. Error handling is robust, ensuring data accuracy and format adherence. Once validated, users can generate a custom QR code badge, enriched with essential contact details.
 
