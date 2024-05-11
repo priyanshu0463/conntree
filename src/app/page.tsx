@@ -20,7 +20,13 @@ export default function Home() {
     event.preventDefault();
 
     const qr = qrcode(0, 'M');
-    const data = `Name: ${formData.firstname} ${formData.lastname}\nEmail: ${formData.email}\nTwitter: ${formData.twitter}\nGitHub: ${formData.github}\nLinkdIn: ${formData.linkdin}`;
+    const data = `
+    Name: ${formData.firstname} ${formData.lastname}
+    Email: ${formData.email}
+    Twitter: ${formData.twitter}
+    GitHub: ${formData.github}
+    LinkedIn: ${formData.linkdin}
+    `;
     qr.addData(data);
     qr.make();
     const qrUrl = qr.createDataURL();
@@ -61,7 +67,7 @@ export default function Home() {
     if (qrCodeUrl) {
       const anchor = document.createElement('a');
       anchor.href = qrCodeUrl;
-      anchor.download = formData.firstname+'.png';
+      anchor.download = `${formData.firstname} ${formData.lastname}`+'.png';
       anchor.click();
     } else {
       alert('No QR code to download.');
@@ -76,7 +82,7 @@ export default function Home() {
         printWindow.document.write(`
           <html>
             <head>
-              <title>QR Code</title>
+              <title>${formData.firstname} ${formData.lastname}</title>
               <style>
                 body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
                 img { max-width: 100%; max-height: 100%; }
@@ -99,11 +105,9 @@ export default function Home() {
 
   return (
     <main className="bg-[#fdfdfa] w-screen h-screen relative flex items-center justify-center p-16 flex-col min-w-[300px] md:flex-row">
-        {/* form container */}
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-6xl items-center p-5 sm:flex-row flex-col md:flex-row min-w-[300px]">
-        {/*content container  */}
         <div className="pl-25 px-16 min-w-[300px] flex justify-self items-self-center">
-          <div className='sm:pl-16'>
+          <div className=''>
 
           <h1 className='sm:align-middle text-[30px] font-bold  text-[#c3a791]'>Add details</h1>
           <p className="text-[15px] text-[#c3a791] mt-1">Click on Create button to generate the QR Code!</p>
@@ -167,15 +171,18 @@ export default function Home() {
           </form>
               </div>
         </div>
-        {/* img container */}
         <div className="justify-center items-center ">
         {qrCodeUrl ? (
           <div className="sm:mt-0 mt-5 flex flex-col items-center ">
-
+            <p className='font-semibold text-xl' >{formData.firstname} {formData.lastname}</p>
+            <p>{formData.email}</p>
+            <p>{formData.twitter} {formData.linkdin !== '' ? `| ${formData.linkdin} ` : ''} {formData.github !== '' ? `| ${formData.github} ` : ''} </p>
             <Image className="rounded-2xl py-5" width={350} height={350} src={qrCodeUrl} alt="QR Code" />
             <div className='flex flex-row gap-10 justify-center py-5'>
-            <button className="bg-[#aa8c76] rounded-xl text-white p-2 hover:scale-105 duration-300 " style={{ width: '120px' }}onClick={handlePrint}>Print</button>
-            <button className="bg-[#aa8c76] rounded-xl text-white p-2 hover:scale-105 duration-300 " style={{ width: '120px' }}onClick={handleDownload}>Download</button>
+            <button className="bg-[#aa8c76] rounded-xl text-white px-4 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center" style={{ width: '120px' }} onClick={handlePrint}>
+            <img src="print.png" width={30} alt="Print" /> Print
+            </button>
+            <button className="bg-[#aa8c76] rounded-xl text-white px-3  pr-6 py-1 hover:scale-105 duration-300 flex flex-row gap-2 font-bold items-center " style={{ minWidth: '120px' }}onClick={handleDownload}><img src="download.png" width={30} alt="Print" />Download</button>
 
             </div>
           </div>
@@ -184,7 +191,7 @@ export default function Home() {
 
             <Image
               className="rounded-2xl"
-              style={{ width: '600px', height: '500px' }}
+              style={{ width: '550px', height: '550px' }}
               src={two}
               alt="alt"
             />
