@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contree(https://conntree.vercel.app/)
+Welcome to the Contree! In the realm of professional networking and event coordination, efficiency and reliability are paramount.This is an intuitive application designed to streamline attendee information exchange at company-sponsored events or local meetups. Gone are the days of manual data entry or cumbersome business card exchanges. With Contree, attendees can swiftly capture and share contact information via personalized QR code badges.
 
-## Getting Started
+This project offers a seamless user experience, featuring an input panel where attendees can effortlessly input their name, email address, Twitter handle, and GitHub username. While attendee name and email are required, the app provides flexibility by allowing optional fields for Twitter and GitHub. Error handling is robust, ensuring data accuracy and format adherence. Once validated, users can generate a custom QR code badge, enriched with essential contact details.
 
-First, run the development server:
+Not stopping there, Contree goes above and beyond with bonus features such as a 'Print' and 'Download' buttons for physical reproduction of badges and automatic '@' symbol insertion for Twitter handles. With clear user stories and detailed requirements, this project serves as an exemplary demonstration of modern event management technology.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How it Works
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Add Your Details in the form and Click on Create.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Edit the Details or Click on Cancel to clear the Details.**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **Click on Print or Download options to Save the QrCode.**
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Hasle free QrCode genertaion.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Easy Share.**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Get Started
 
-## Deploy on Vercel
+### Clone the repository to your local machine:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    git clone https://github.com/priyanshu0463/conntree.git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Navigate to the project directory:
+
+    cd conntree
+
+### Run the Nextjs-app
+
+    npm run dev
+
+
